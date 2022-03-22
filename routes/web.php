@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\BusController;
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', [BusController::class, 'showForm']);
+// Show the form for creating a new Artist
+Route::get('/artists/create', [ArtistController::class, 'create'])->name('artists.create');
 
-Route::get('/bus-info', [BusController::class, 'showInfo']);
+// Handle the form for creating an Artist (store the record in the db)
+Route::post('/artists', [ArtistController::class, 'store'])->name('artists.store');
 
-Route::get('/buses', [BusController::class, 'index'])->name('buses.index');
-
-Route::get('/buses/{bus}', [BusController::class, 'show'])->name('buses.show');
