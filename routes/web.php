@@ -27,3 +27,6 @@ Route::get('/artists/create', [ArtistController::class, 'create'])->name('artist
 // Handle the form for creating an Artist (store the record in the db)
 Route::post('/artists', [ArtistController::class, 'store'])->name('artists.store');
 
+Route::get('/artists', [ArtistController::class, 'index'])->name('artists.index');
+
+Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');

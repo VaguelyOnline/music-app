@@ -16,7 +16,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        return Artist::all();
     }
 
     /**
@@ -58,7 +58,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        //
+        return $artist;
     }
 
     /**
