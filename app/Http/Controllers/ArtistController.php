@@ -45,7 +45,7 @@ class ArtistController extends Controller
         ]);
 
         // write the record to the database
-        Artist::create($params);
+        Artist::create($request->all());
 
         return 'Done';
     }
@@ -81,7 +81,7 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
-        //
+        
     }
 
     /**
