@@ -15,6 +15,9 @@ class Song extends Model
         'image'
     ];
 
+    /**
+     * Relationship method. Each Song is associated with a collection of Artists.
+     */
     public function artists() {
         return $this->belongsToMany(Artist::class);
     }
