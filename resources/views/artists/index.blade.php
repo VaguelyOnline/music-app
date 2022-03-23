@@ -20,6 +20,10 @@
             <li>
                 <a href="{{ route('artists.show', $artist) }}">
                     {{ $artist->name }}
+
+                    <strong>
+                        {{ $artist->songs->count() }}
+                    </strong>
                 </a>
             </li>
         @endforeach
