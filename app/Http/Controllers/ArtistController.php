@@ -14,9 +14,11 @@ class ArtistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Artist::all();
+        $search = $request['search'];
+        $artists = Artist::where('name', 'like', "%$search%")->paginate(5);
+        return view('artists.index', compact('artists'));
     }
 
     /**
@@ -44,8 +46,9 @@ class ArtistController extends Controller
             'image'
         ]);
 
+
         // write the record to the database
-        Artist::create($request->all());
+        Artist::create($params);
 
         return 'Done';
     }
