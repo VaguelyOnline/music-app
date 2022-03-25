@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArtistRequest;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 
@@ -37,18 +38,10 @@ class ArtistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtistRequest $request)
     {
-        // extract the parameters from the request
-        $params = $request->only([
-            'name',
-            'description',
-            'image'
-        ]);
-
-
-        // write the record to the database
-        Artist::create($params);
+        // writes the validated data to the DB
+        Artist::create($request->validated());
 
         return 'Done';
     }
