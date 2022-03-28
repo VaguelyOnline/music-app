@@ -9,10 +9,10 @@
     {{ $artists->links() }}
 
     <form action="{{ route('artists.index') }}" method="GET">
-        <label>Search: </label>    
-        <input type="text" name="search">
+        <label class="form-label">Search: </label>    
+        <input type="text" name="search" class="form-control">
 
-        <button>Search</button>
+        <button class="btn btn-outline-secondary">Search</button>
     </form>
     
     <ul>

@@ -6,6 +6,8 @@
 
     <p>Need to define the relationships between your models? Have no fear! Eloquent to the rescue!</p>
 
+    <a href="{{ route('artists.index') }}" type="button" class="btn btn-outline-primary">View artists</a>
+
     <ol>
         <li>
             Determine what the type of relationship is (o2o, o2m, m2m)
