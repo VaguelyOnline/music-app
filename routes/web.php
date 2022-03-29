@@ -3,6 +3,8 @@
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\BusController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\PlaylistController;
+use App\Models\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +32,8 @@ Route::post('/artists', [ArtistController::class, 'store'])->name('artists.store
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists.index');
 
 Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
+
+// Wires up all CRUD routes in a single function call!!
+Route::resource('playlists', PlaylistController::class);
+
+// Route::resource('artists', ArtistController::class);
