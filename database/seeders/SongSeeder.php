@@ -17,9 +17,9 @@ class SongSeeder extends Seeder
      */
     public function run(Generator $faker)
     {
-        for ($i=0; $i < 5000; $i++)
+        for ($i=0; $i < 500; $i++)
             Song::create([
-                'name' => $faker->text(20),
+                'name' => $faker->words(rand(1, 4), true),
                 'seconds' => rand(120, 300),
                 'image' => $faker->url()
             ]);

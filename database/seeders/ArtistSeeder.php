@@ -16,7 +16,7 @@ class ArtistSeeder extends Seeder
      */
     public function run(Generator $faker)
     {
-        for($i = 0; $i < 2000; $i++) {
+        for($i = 0; $i < 400; $i++) {
             Artist::create([
                 'name' => $faker->name(),
                 'description' => $faker->text(200),

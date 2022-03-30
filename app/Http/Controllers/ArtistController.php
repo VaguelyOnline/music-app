@@ -88,6 +88,5 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        //
     }
 }

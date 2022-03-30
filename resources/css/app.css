@@ -3,7 +3,7 @@
 }
 
 .playlist.card {
-    height: 420px;
+    min-height: 420px;
     margin-bottom: 40px;
     transition: background-color 400ms;
 }
