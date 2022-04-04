@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\ArtistController;
-use App\Http\Controllers\BusController;
-use App\Http\Controllers\CalculatorController;
-use App\Http\Controllers\PlaylistController;
-use App\Models\Artist;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\PlaylistController;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +42,15 @@ Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artist
 // Wires up all CRUD routes in a single function call!!
 Route::resource('playlists', PlaylistController::class);
 
-// Route::resource('artists', ArtistController::class);
+Route::get('text-info', function () {
+
+    $count = Cache::remember('count', now()->addMinute(), function () {
+        $text = Http::get('https://www.gutenberg.org/cache/epub/10/pg10.txt');
+        $words = explode(' ', $text);
+        return count($words);
+    });
+
+    return $count;
+});
+
+require __DIR__.'/auth.php';

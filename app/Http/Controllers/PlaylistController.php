@@ -6,6 +6,7 @@ use App\Http\Requests\SearchPlaylistRequest;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class PlaylistController extends Controller
 {
@@ -14,7 +15,7 @@ class PlaylistController extends Controller
         $params = $request->validated();
         $search = Arr::get($params, 'search', '');
 
-        $query = Playlist::query();
+        $query = Auth::user()->playlists();
         if ($search != '') {
             $query->matchSearch($search);
         }
