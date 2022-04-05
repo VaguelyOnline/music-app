@@ -39,6 +39,11 @@ Route::get('/artists', [ArtistController::class, 'index'])->name('artists.index'
 
 Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
 
+// Policies can be applied via the 'can' middleware declaration
+// Route::get('playlists/{playlist}', [PlaylistController::class, 'show'])
+//     ->can('view', 'playlist')
+//     ->name('playlists.show');
+
 // Wires up all CRUD routes in a single function call!!
 Route::resource('playlists', PlaylistController::class);
 

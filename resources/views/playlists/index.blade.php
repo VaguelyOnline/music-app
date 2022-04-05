@@ -49,6 +49,16 @@
     @endif
 
     <div class="row">
+        <div class="col">
+            <form action="#">
+
+                <input type="file" name="image" class="form-control"> Select Image
+
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
         @if($promoted)
             <div class="col-md-6">
                 @include('components.playlists.promoted-card', ['playlist' => $promoted])
