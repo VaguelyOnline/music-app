@@ -5077,6 +5077,53 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+window.DICTIONARY = null;
+
+function loadText() {
+  fetch('/api/text').then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return window.DICTIONARY = parseText(data);
+  });
+}
+
+function getWords(text) {
+  return text.split(' ');
+}
+
+function cleanWords(words) {
+  for (var i = 0; i < words.length; i++) {
+    words[i] = cleanWord(words[i]);
+  }
+
+  return words; // return words.map(word => cleanWord(word));
+}
+
+function cleanWord(word) {
+  return word.toLowerCase().replace(/[^a-z]/gi, '');
+}
+
+function buildDictionary(words) {
+  var dictionary = {};
+  words.forEach(function (word) {
+    var count = dictionary[word] || 0;
+    dictionary[word] = ++count;
+  });
+  return {
+    words: dictionary,
+    find: function find(word) {
+      return this.words[word] || 0;
+    }
+  };
+}
+
+function parseText(data) {
+  var words = getWords(data.text);
+  var cleanedWords = cleanWords(words);
+  return buildDictionary(cleanedWords);
+}
+
+loadText();
 
 /***/ }),
 

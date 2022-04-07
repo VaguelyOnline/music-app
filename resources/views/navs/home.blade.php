@@ -8,6 +8,12 @@
 
     @endif
 
+    @if(Auth::user()->hasRole('trainer'))
+
+        @include('navs.trainer-links')
+
+    @endif
+
     <a href="...">Logout</a>
 
 </div>

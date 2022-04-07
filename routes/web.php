@@ -48,14 +48,7 @@ Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artist
 Route::resource('playlists', PlaylistController::class);
 
 Route::get('text-info', function () {
-
-    $count = Cache::remember('count', now()->addMinute(), function () {
-        $text = Http::get('https://www.gutenberg.org/cache/epub/10/pg10.txt');
-        $words = explode(' ', $text);
-        return count($words);
-    });
-
-    return $count;
+    return view('playground');
 });
 
 require __DIR__.'/auth.php';
