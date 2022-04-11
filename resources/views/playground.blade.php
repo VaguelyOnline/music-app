@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <h1>This is my JS playground!</h1>
+    <word-search></word-search>
 
 @endsection
