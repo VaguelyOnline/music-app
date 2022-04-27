@@ -56,3 +56,12 @@ function parseText(data) {
 
 loadText();
 
+
+
+const sharetribeSdk = require('sharetribe-flex-sdk');
+
+// Create new SDK instance
+// To obtain a client ID, see Applications in Flex Console
+const sdk = sharetribeSdk.createInstance({
+  clientId: '<Your Client ID here>'
+});

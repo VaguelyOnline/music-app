@@ -23,8 +23,6 @@ class PlaylistController extends Controller
 
     public function index(SearchPlaylistRequest $request) {
 
-        Playlist::whereBanan('id', '!=')->get();
-
         $params = $request->validated();
         $search = Arr::get($params, 'search', '');
 
