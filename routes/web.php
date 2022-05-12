@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
+    return phpinfo();
 });
 
 // Show the form for creating a new Artist
