@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\SieveController;
 use App\Http\Controllers\SongController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -49,6 +50,8 @@ Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
 
 // Wires up all CRUD routes in a single function call!!
 Route::resource('playlists', PlaylistController::class);
+
+Route::any('sieve', [SieveController::class, 'queueSieveCalculation'])->name('sieve.store');
 
 Route::get('text-info', function () {
     return view('playground');
