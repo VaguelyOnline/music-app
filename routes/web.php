@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('sieve', [SieveController::class, 'queueSieveCalculation'])->name('sieve.store');
+Route::any('sieve', [SieveController::class, 'queueSieveCalculation'])->name('sieves.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,7 +33,7 @@ Route::get('/', function () {
     return phpinfo();
 });
 
-Route::get('/get-primes', [SieveController::class, 'index'])->name('sieve.index');
+Route::get('/sieves/create', [SieveController::class, 'create'])->name('sieves.create');
 
 
 // Show the form for creating a new Artist

@@ -9,19 +9,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class ProcessSieve implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $sieve = null;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;  
+    
+    private int $size;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(int $size)
     {
-        $this->sieve = new Sieve(25);
+        $this->size = $size;
     }
 
     /**
@@ -31,14 +33,8 @@ class ProcessSieve implements ShouldQueue
      */
     public function handle()
     {
-        echo 'Handling the job!';
-        $this->sieve->getPrimes();
-        
-        // show the primes 
-
-
-
-
-
+        $this->sieve = new Sieve($this->size);
+        $primes = $this->sieve->getPrimes();
+        Log::info($primes);
     }
 }
