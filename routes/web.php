@@ -14,6 +14,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::any('sieve', [SieveController::class, 'queueSieveCalculation'])->name('sieves.store');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -21,6 +23,9 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     return phpinfo();
 });
+
+Route::get('/sieves/create', [SieveController::class, 'create'])->name('sieves.create');
+
 
 // Show the form for creating a new Artist
 Route::get('/artists/create', [ArtistController::class , 'create'])->name('artists.create');
