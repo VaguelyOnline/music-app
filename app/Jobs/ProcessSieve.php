@@ -33,8 +33,12 @@ class ProcessSieve implements ShouldQueue
      */
     public function handle()
     {
+        // update the SieveJob to indicate status: started
+
         $this->sieve = new Sieve($this->size);
         $primes = $this->sieve->getPrimes();
         Log::info($primes);
+
+        // update the SieveJob to indicate status: complete
     }
 }

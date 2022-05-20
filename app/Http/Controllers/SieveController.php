@@ -19,11 +19,15 @@ class SieveController extends Controller
 
     public function queueSieveCalculation(StoreSieveRequest $request)
     {
+        // Store an instance of the SieveJob -> In the database, status: pending
+
+        // does the job need any more data for it to do it's thing??
         ProcessSieve::dispatch($request->validated('size'));
     }
 
     public function apiJobs()
     {
+        // API resource class anyone?? 
         return SieveJob::all();
     }
 

@@ -43,7 +43,7 @@ export default {
     },
 
     loadJobs() {
-      //
+      // fetch the jobs with their status' from /api/jobs (SieveController@apiJobs)
     }
   }
 };
