@@ -1,17 +1,19 @@
-require('./bootstrap');
+require("./bootstrap");
 
 // Starter-kit boilerplate (optional if you've implemented your own)
-import Alpine from 'alpinejs';
+import Alpine from "alpinejs";
 window.Alpine = Alpine;
 Alpine.start();
 
 // Initialise Vue components
-import HelloWorld from './components/HelloWorld';
-import WordSearch from './components/WordSearch';
+import HelloWorld from "./components/HelloWorld";
+import WordSearch from "./components/WordSearch";
+import SievesStatus from "./components/sieves/SievesStatus";
 
 // register component with Vue
-import { createApp } from 'vue';
+import { createApp } from "vue";
 let vueApp = createApp({});
-vueApp.component('hello-world', HelloWorld);
-vueApp.component('word-search', WordSearch);
-vueApp.mount('#vue-app');
+vueApp.component("hello-world", HelloWorld);
+vueApp.component("word-search", WordSearch);
+vueApp.component("sieves-status", SievesStatus);
+vueApp.mount("#vue-app");

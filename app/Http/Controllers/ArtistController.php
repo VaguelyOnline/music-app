@@ -22,6 +22,13 @@ class ArtistController extends Controller
         return view('artists.index', compact('artists'));
     }
 
+    public function test(Request $request)
+    {
+        // $search = $request['search'];
+        // $artists = Artist::where('name', 'like', "%$search%")->paginate(5);
+        return view('artists/test');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -65,7 +72,7 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        //
+    //
     }
 
     /**
@@ -77,7 +84,7 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
-        
+
     }
 
     /**
