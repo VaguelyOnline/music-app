@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Services\Sieve;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 class ProcessSieve implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
+    private $sieve = null;
     /**
      * Create a new job instance.
      *
@@ -20,7 +21,7 @@ class ProcessSieve implements ShouldQueue
      */
     public function __construct()
     {
-        //
+        $this->sieve = new Sieve(25);
     }
 
     /**
@@ -31,5 +32,13 @@ class ProcessSieve implements ShouldQueue
     public function handle()
     {
         echo 'Handling the job!';
+        $this->sieve->getPrimes();
+        
+        // show the primes 
+
+
+
+
+
     }
 }

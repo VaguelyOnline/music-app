@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::any('sieve', [SieveController::class, 'queueSieveCalculation'])->name('sieve.store');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -30,6 +32,9 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     return phpinfo();
 });
+
+Route::get('/get-primes', [SieveController::class, 'index'])->name('sieve.index');
+
 
 // Show the form for creating a new Artist
 Route::get('/artists/create', [ArtistController::class, 'create'])->name('artists.create');
@@ -50,8 +55,6 @@ Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
 
 // Wires up all CRUD routes in a single function call!!
 Route::resource('playlists', PlaylistController::class);
-
-Route::any('sieve', [SieveController::class, 'queueSieveCalculation'])->name('sieve.store');
 
 Route::get('text-info', function () {
     return view('playground');
